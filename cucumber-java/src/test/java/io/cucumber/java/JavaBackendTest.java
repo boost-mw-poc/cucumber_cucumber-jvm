@@ -1,6 +1,7 @@
 package io.cucumber.java;
 
 import io.cucumber.core.backend.Glue;
+import io.cucumber.core.backend.GlueDiscoveryRequest;
 import io.cucumber.core.backend.ObjectFactory;
 import io.cucumber.core.backend.StepDefinition;
 import io.cucumber.java.steps.Steps;
@@ -12,12 +13,11 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoSettings;
 
-import java.net.URI;
 import java.util.List;
 
+import static io.cucumber.core.backend.GlueDiscoverySelector.selectUri;
 import static java.lang.Thread.currentThread;
 import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
 import static java.util.stream.Collectors.toList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -47,23 +47,34 @@ class JavaBackendTest {
 
     @Test
     void finds_step_definitions_by_classpath_url() {
-        backend.loadGlue(glue, singletonList(URI.create("classpath:io/cucumber/java/steps")));
+        var request = GlueDiscoveryRequest.builder()
+                .selectors(selectUri("classpath:io/cucumber/java/steps")) //
+                .build();
+        backend.loadGlue(glue, request);
         backend.buildWorld();
         verify(factory).addClass(Steps.class);
     }
 
     @Test
     void finds_step_definitions_once_by_classpath_url() {
-        backend.loadGlue(glue,
-            asList(URI.create("classpath:io/cucumber/java/steps"), URI.create("classpath:io/cucumber/java/steps")));
+        var request = GlueDiscoveryRequest.builder()
+                .selectors(selectUri("classpath:io/cucumber/java/steps"))
+                .selectors(selectUri("classpath:io/cucumber/java/steps")) //
+                .build();
+        backend.loadGlue(glue, request);
         backend.buildWorld();
         verify(factory, times(1)).addClass(Steps.class);
     }
 
     @Test
     void detects_subclassed_glue_and_throws_exception() {
-        Executable testMethod = () -> backend.loadGlue(glue, asList(URI.create("classpath:io/cucumber/java/steps"),
-            URI.create("classpath:io/cucumber/java/incorrectlysubclassedsteps")));
+        Executable testMethod = () -> {
+            var request = GlueDiscoveryRequest.builder()
+                    .selectors(selectUri("classpath:io/cucumber/java/steps")) //
+                    .selectors(selectUri("classpath:io/cucumber/java/incorrectlysubclassedsteps")) //
+                    .build();
+            backend.loadGlue(glue, request);
+        };
         InvalidMethodException expectedThrown = assertThrows(InvalidMethodException.class, testMethod);
         assertThat(expectedThrown.getMessage(), is(equalTo(
             """
@@ -81,7 +92,10 @@ class JavaBackendTest {
 
     @Test
     void detects_repeated_annotations() {
-        backend.loadGlue(glue, singletonList(URI.create("classpath:io/cucumber/java/repeatable")));
+        var request = GlueDiscoveryRequest.builder() //
+                .selectors(selectUri("classpath:io/cucumber/java/repeatable")) //
+                .build();
+        backend.loadGlue(glue, request);
         verify(glue, times(2)).addStepDefinition(stepDefinition.capture());
 
         List<String> patterns = stepDefinition.getAllValues()
