@@ -27,6 +27,7 @@ class GlueLoadingAdvisorTest {
     @BeforeEach
     void setup() {
         LoggerFactory.addListener(listener);
+        GlueLoadingAdvisor.loggedOnce.set(false);
     }
 
     @Test

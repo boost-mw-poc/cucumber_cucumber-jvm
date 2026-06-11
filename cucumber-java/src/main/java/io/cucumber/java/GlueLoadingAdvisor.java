@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 /**
@@ -29,6 +30,8 @@ final class GlueLoadingAdvisor {
     private final Options options;
     private final Clock clock;
     private @Nullable Instant glueLoadingStart;
+
+    static final AtomicBoolean loggedOnce = new AtomicBoolean();
 
     GlueLoadingAdvisor(Options options) {
         this(options, Clock.systemUTC());
@@ -80,6 +83,12 @@ final class GlueLoadingAdvisor {
         addSuggestionRemoveClassWithoutGlueFromGluePackage(suggestions);
         addSuggestionChangePublicStaticInnerClassesToPrivateClasses(suggestions);
         addSuggestionRemoveNonPublicClassFromGluePackage(suggestions);
+
+        // Glue may be discovered in parallel, avoid logging this more than
+        // once.
+        if (!loggedOnce.compareAndSet(false, true)) {
+            return;
+        }
 
         log.info(() -> """
                 Scanning the glue packages took %s ms for %d classes, but only %d of them contained Cucumber classes.
