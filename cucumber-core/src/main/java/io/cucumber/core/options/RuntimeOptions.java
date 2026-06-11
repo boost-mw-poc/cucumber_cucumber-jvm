@@ -15,6 +15,7 @@ import io.cucumber.tagexpressions.Expression;
 import org.jspecify.annotations.Nullable;
 
 import java.net.URI;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -49,6 +50,8 @@ public final class RuntimeOptions implements
     private boolean dryRun;
     private boolean monochrome = false;
     private boolean wip = false;
+    private boolean glueHint = true;
+    private Duration glueHintThreshold = Duration.ofMillis(100);
     private SnippetType snippetType = SnippetType.UNDERSCORE;
     private int threads = 1;
     private PickleOrder pickleOrder = StandardPickleOrders.lexicalUriOrder();
@@ -159,6 +162,24 @@ public final class RuntimeOptions implements
     }
 
     @Override
+    public boolean isGlueHintEnabled() {
+        return glueHint;
+    }
+
+    void setGlueHintEnabled(boolean glueHint) {
+        this.glueHint = glueHint;
+    }
+
+    @Override
+    public Duration getGlueHintThreshold() {
+        return glueHintThreshold;
+    }
+
+    void setGlueHintThreshold(Duration glueHintThreshold) {
+        this.glueHintThreshold = glueHintThreshold;
+    }
+
+    @Override
     public @Nullable Class<? extends ObjectFactory> getObjectFactoryClass() {
         return objectFactoryClass;
     }
@@ -175,6 +196,7 @@ public final class RuntimeOptions implements
     @Override
     public GlueDiscoveryRequest getGlueDiscoveryRequest() {
         return GlueDiscoveryRequest.builder() //
+                .options(this)
                 .selectors(glue.stream().map(GlueDiscoverySelector::selectUri).toList()) //
                 .build();
     }

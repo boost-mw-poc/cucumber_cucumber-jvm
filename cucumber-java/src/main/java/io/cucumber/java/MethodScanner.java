@@ -63,7 +63,7 @@ final class MethodScanner {
         try {
             return aClass.getDeclaredMethods();
         } catch (NoClassDefFoundError e) {
-            log.warn(e,
+            log.trace(e,
                 () -> "Failed to load declared methods of class '" + aClass.getName() + "'.\n"
                         + classPathScanningExplanation());
         }

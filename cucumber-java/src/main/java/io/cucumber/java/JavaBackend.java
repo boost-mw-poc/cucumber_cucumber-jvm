@@ -31,19 +31,31 @@ final class JavaBackend implements Backend {
     @Override
     public void loadGlue(Glue glue, GlueDiscoveryRequest request) {
         GlueAdaptor glueAdaptor = new GlueAdaptor(lookup, glue);
+        GlueLoadingAdvisor advisor = new GlueLoadingAdvisor(request.getOptions());
 
-        request.getSelectorsByType(GlueDiscoverySelector.UriGlueDiscoverySelector.class) //
+        var gluePaths = request.getSelectorsByType(GlueDiscoverySelector.UriGlueDiscoverySelector.class) //
                 .stream() //
                 .map(GlueDiscoverySelector.UriGlueDiscoverySelector::uri) //
+                .toList();
+
+        advisor.glueLoadingStarted();
+
+        gluePaths.stream() //
                 .filter(gluePath -> CLASSPATH_SCHEME.equals(gluePath.getScheme()))
                 .map(ClasspathSupport::packageName)
                 .map(classFinder::scanForClassesInPackage)
                 .flatMap(Collection::stream)
                 .distinct()
-                .forEach(aGlueClass -> scan(aGlueClass, (method, annotation) -> {
-                    container.addClass(method.getDeclaringClass());
-                    glueAdaptor.addDefinition(method, annotation);
-                }));
+                .forEach(aGlueClass -> {
+                    advisor.addGlueClass(aGlueClass);
+                    scan(aGlueClass, (method, annotation) -> {
+                        advisor.addContainerClass(method.getDeclaringClass());
+                        container.addClass(method.getDeclaringClass());
+                        glueAdaptor.addDefinition(method, annotation);
+                    });
+                });
+
+        advisor.logGlueLoadingSuggestions(gluePaths);
     }
 
     @Override
