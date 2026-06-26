@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Fixed
+- [Core] Update dependency io.cucumber:messages-ndjson to v0.3.4
 - [Core] Update dependency com.fasterxml.jackson:jackson-bom to v2.22.0
 
 ## [7.34.3] - 2026-03-04
