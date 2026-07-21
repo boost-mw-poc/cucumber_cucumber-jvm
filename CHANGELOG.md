@@ -26,21 +26,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [All] Set baseline to Java 17 ([#3116](https://github.com/cucumber/cucumber-jvm/pull/3116))
 - [All] Adopt [JSpecify](https://jspecify.dev/) to declare nullability ([#3116](https://github.com/cucumber/cucumber-jvm/pull/3116))
 - [Core] Update skipped, pending and undefined colors ([cucumber/common#2302](https://github.com/cucumber/common/issues/2302))
-- [Core] Update dependency io.cucumber:ci-environment.version to v13.0.0
-- [Core] Update dependency io.cucumber:cucumber-expressions.version to v19.0.0
-- [Core] Update dependency io.cucumber:cucumber-json-formatter.version to v0.4.0
-- [Core] Update dependency io.cucumber:gherkin.version to v38.0.0
-- [Core] Update dependency io.cucumber:html-formatter.version to v23.0.0
-- [Core] Update dependency io.cucumber:junit-xml-formatter.version to v0.12.0
-- [Core] Update dependency io.cucumber:messages.version to v32.0.0
-- [Core] Update dependency io.cucumber:messages-ndjson.version to v0.4.0
-- [Core] Update dependency io.cucumber:pretty-formatter.version to v3.0.0 
-- [Core] Update dependency io.cucumber:query.version to v15.0.1
-- [Core] Update dependency io.cucumber:tag-expressions.version to v9.0.0
+- [Core] Update dependency io.cucumber:ci-environment.version to v14.0.0
+- [Core] Update dependency io.cucumber:cucumber-expressions.version to v20.0.0
+- [Core] Update dependency io.cucumber:cucumber-json-formatter.version to v0.4.1
+- [Core] Update dependency io.cucumber:gherkin.version to v42.0.0
+- [Core] Update dependency io.cucumber:html-formatter.version to v24.1.0
+- [Core] Update dependency io.cucumber:junit-xml-formatter.version to v0.14.0
+- [Core] Update dependency io.cucumber:messages.version to v34.2.0
+- [Core] Update dependency io.cucumber:messages-ndjson.version to v0.5.1
+- [Core] Update dependency io.cucumber:pretty-formatter.version to v4.0.0 
+- [Core] Update dependency io.cucumber:query.version to v16.0.1
+- [Core] Update dependency io.cucumber:tag-expressions.version to v10.0.0
 - [Core] Update dependency io.cucumber:teamcity-formatter.version to v0.3.0
-- [Core] Update dependency io.cucumber:testng-xml-formatter.version to v0.8.0
+- [Core] Update dependency io.cucumber:testng-xml-formatter.version to v0.8.1
 - [Core] Update dependency io.cucumber:usage-formatter.version to v0.2.0
-- [JUnit Platform Engine] Use JUnit Platform 6.0.2 (JUnit Jupiter 6.0.2) ([#3162](https://github.com/cucumber/cucumber-jvm/pull/3162))
+- [JUnit Platform Engine] Use JUnit Platform 6.1.2 (JUnit Jupiter 6.1.2) ([#3162](https://github.com/cucumber/cucumber-jvm/pull/3162))
 - [All] Classes not designed for extension are now final. See [api-changes.json](./.revapi/api-changes.json) for details.
 - [All] Utility classes are no longer instantiatable. See [api-changes.json](./.revapi/api-changes.json) for details.
 
