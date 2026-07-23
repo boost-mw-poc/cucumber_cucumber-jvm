@@ -49,6 +49,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [OpenEJB] Removed `cucumber-cdi2` in favor of `cucumber-jakarta-cdi` ([#3192](https://github.com/cucumber/cucumber-jvm/pull/3192))
 - [OpenEJB] Removed `cucumber-deltaspike` without replacement ([#3193](https://github.com/cucumber/cucumber-jvm/pull/3193))
 
+## [7.34.5] - 2026-07-23
+### Fixed
+- [Core] Update dependency io.cucumber:messages-ndjson to v0.3.5
+- [Core] Update dependency com.fasterxml.jackson:jackson-bom to v2.22.1
+
 ## [7.34.4] - 2026-06-26
 ### Fixed
 - [Core] Update dependency io.cucumber:messages-ndjson to v0.3.4
@@ -637,7 +642,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [Weld] Removed `cucumber-weld` in favour of `cucumber-jakarta-cdi` or `cucumber-cdi2`. ([#2276](https://github.com/cucumber/cucumber-jvm/issues/2276) M.P. Korstanje)
 - [Needle] Removed `cucumber-needled` in favour of `cucumber-jakarta-cdi` or `cucumber-cdi2`. ([#2276](https://github.com/cucumber/cucumber-jvm/issues/2276) M.P. Korstanje)
 
-[Unreleased]: https://github.com/cucumber/cucumber-jvm/compare/v7.34.4...HEAD
+[Unreleased]: https://github.com/cucumber/cucumber-jvm/compare/v7.34.5...HEAD
+[7.34.5]: https://github.com/cucumber/cucumber-jvm/compare/v7.34.4...v7.34.5
 [7.34.4]: https://github.com/cucumber/cucumber-jvm/compare/v7.34.3...v7.34.4
 [7.34.3]: https://github.com/cucumber/cucumber-jvm/compare/v7.34.2...v7.34.3
 [7.34.2]: https://github.com/cucumber/cucumber-jvm/compare/v7.34.1...v7.34.2
