@@ -1,6 +1,6 @@
 package io.cucumber.junit.platform.engine;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"deprecation", "removal"})
 @Cucumber
 final class RunCucumberTest {
 

@@ -116,7 +116,7 @@ class TestCaseStateResultTest {
             () -> assertFalse(s.isFailed()));
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     @Test
     void embeds_data() {
         byte[] data = new byte[] { 1, 2, 3 };

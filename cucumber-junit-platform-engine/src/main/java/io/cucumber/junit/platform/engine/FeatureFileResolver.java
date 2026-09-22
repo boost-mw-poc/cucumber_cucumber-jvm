@@ -184,7 +184,7 @@ final class FeatureFileResolver implements SelectorResolver {
         return toResolution(selectors);
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     @Override
     public Resolution resolve(ClassSelector selector, Context context) {
         Class<?> javaClass = selector.getJavaClass();

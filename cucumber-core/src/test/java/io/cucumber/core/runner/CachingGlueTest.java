@@ -656,7 +656,7 @@ class CachingGlueTest {
         assertThat(stepTypeRegistry1 == stepTypeRegistry2, is(true));
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     private static final class MockedScenarioScopedStepDefinition extends StubStepDefinition implements ScenarioScoped {
 
         private boolean disposed;
@@ -676,7 +676,7 @@ class CachingGlueTest {
 
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     private static final class MockedDataTableTypeDefinition implements DataTableTypeDefinition, ScenarioScoped {
 
         @Override
@@ -707,7 +707,7 @@ class CachingGlueTest {
 
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     private static class MockedParameterTypeDefinition implements ParameterTypeDefinition, ScenarioScoped {
 
         @Override
@@ -788,7 +788,7 @@ class CachingGlueTest {
 
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     private static final class MockedScenarioScopedHookDefinition implements HookDefinition, ScenarioScoped {
 
         private final int order;
@@ -866,7 +866,7 @@ class CachingGlueTest {
 
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     private static final class MockedDefaultParameterTransformer
             implements DefaultParameterTransformerDefinition, ScenarioScoped {
 
@@ -898,7 +898,7 @@ class CachingGlueTest {
 
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     private static final class MockedDefaultDataTableCellTransformer
             implements DefaultDataTableCellTransformerDefinition, ScenarioScoped {
 
@@ -930,7 +930,7 @@ class CachingGlueTest {
 
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     private static final class MockedDefaultDataTableEntryTransformer
             implements DefaultDataTableEntryTransformerDefinition, ScenarioScoped {
 
@@ -967,7 +967,7 @@ class CachingGlueTest {
 
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     private static final class MockedDocStringTypeDefinition implements DocStringTypeDefinition, ScenarioScoped {
 
         @Override

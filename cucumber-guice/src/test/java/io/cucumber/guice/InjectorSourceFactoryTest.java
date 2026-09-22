@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class InjectorSourceFactoryTest {
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     @Test
     void instantiatesInjectorSourceByFullyQualifiedName() {
         Map<String, String> properties = new HashMap<>();
@@ -29,7 +29,7 @@ class InjectorSourceFactoryTest {
         assertThat(aClass, is(CustomInjectorSource.class));
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     @Test
     void failsToLoadNonExistantClass() {
         Map<String, String> properties = new HashMap<>();

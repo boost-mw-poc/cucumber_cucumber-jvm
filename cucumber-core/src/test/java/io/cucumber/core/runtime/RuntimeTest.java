@@ -762,7 +762,7 @@ class RuntimeTest {
 
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     private static final class MockedScenarioScopedStepDefinition
             implements ScenarioScoped, io.cucumber.core.backend.StepDefinition {
 

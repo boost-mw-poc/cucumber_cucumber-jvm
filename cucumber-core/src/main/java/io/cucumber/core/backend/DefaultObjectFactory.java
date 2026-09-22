@@ -98,7 +98,7 @@ public final class DefaultObjectFactory implements ObjectFactory {
         return (Constructor<T>) constructors.get(0);
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     public static <T> Constructor<T> makeAccessible(Constructor<T> constructor) {
         if ((!Modifier.isPublic(constructor.getModifiers())
                 || !Modifier.isPublic(constructor.getDeclaringClass().getModifiers())) && !constructor.isAccessible()) {

@@ -30,7 +30,7 @@ public final class GuiceFactory implements ObjectFactory {
     private @Nullable Class<?> withInjectorSource;
     private @Nullable ScenarioScope scenarioScope;
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     public GuiceFactory() {
         this.injectorSourceFromProperty = loadInjectorSourceFromProperties(CucumberProperties.create());
         // Eager init to allow for static binding prior to before all hooks

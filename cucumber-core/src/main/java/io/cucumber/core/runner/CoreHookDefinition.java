@@ -36,7 +36,7 @@ class CoreHookDefinition {
         }
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     static CoreHookDefinition create(HookDefinition hookDefinition, Supplier<UUID> uuidGenerator) {
         // Ideally we would avoid this by keeping the scenario scoped
         // glue in a different bucket from the globally scoped glue.
@@ -86,7 +86,7 @@ class CoreHookDefinition {
         return delegate.getSourceReference();
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     static final class ScenarioScopedCoreHookDefinition extends CoreHookDefinition implements ScenarioScoped {
 
         private ScenarioScopedCoreHookDefinition(UUID id, HookDefinition delegate) {

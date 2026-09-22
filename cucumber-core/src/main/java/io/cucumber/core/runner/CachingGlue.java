@@ -55,7 +55,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 final class CachingGlue implements Glue {
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     private static final Comparator<CoreHookDefinition> HOOK_ORDER_ASCENDING = Comparator
             .comparingInt(CoreHookDefinition::getOrder)
             .thenComparing(ScenarioScoped.class::isInstance);
@@ -153,7 +153,7 @@ final class CachingGlue implements Glue {
         updateHasScenarioScoedGlue(parameterType);
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     private void updateHasScenarioScoedGlue(Object stepDefinition) {
         hasScenarioScopedGlue |= stepDefinition instanceof ScenarioScoped;
     }
@@ -519,7 +519,7 @@ final class CachingGlue implements Glue {
         hasScenarioScopedGlue = false;
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "removal"})
     private void removeScenarioScopedGlue(Iterable<?> glues) {
         Iterator<?> glueIterator = glues.iterator();
         while (glueIterator.hasNext()) {
